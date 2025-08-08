@@ -1,7 +1,7 @@
 
 import React from 'react';
 
-const PlayerControls = ({ 
+const Controls = ({ 
   isPlaying, 
   onPlayPause, 
   onPrevious, 
@@ -11,9 +11,7 @@ const PlayerControls = ({
 }) => {
   return (
     <div style={{ 
-      backgroundColor: '#111827', 
       padding: '1.5rem', 
-      borderRadius: '0.5rem' 
     }}>
       <div style={{ 
         display: 'flex', 
@@ -27,10 +25,10 @@ const PlayerControls = ({
           style={{
             padding: '0.75rem',
             backgroundColor: '#2563EB',
-            border: 'none',
+            // border: 'none',
             borderRadius: '50%',
-            color: 'white',
-            cursor: 'pointer',
+            color: 'black',
+            // cursor: 'pointer',
             fontSize: '1rem'
           }}
         >
@@ -90,4 +88,4 @@ const PlayerControls = ({
   );
 };
 
-export default PlayerControls;
+export default Controls;

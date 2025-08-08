@@ -2,12 +2,12 @@
 // src/js/component/home.js
 import React from "react";
 import AudioPlayer from "./AudioPlayer.jsx";
-import { sampleTracks } from "./sampleData.jsx";
+import { Songs} from "./songData.jsx";
 
 const Home = () => {
   return (
     <div className="text-center">
-      <AudioPlayer tracks={sampleTracks} />
+      <AudioPlayer tracks={ Songs} />
     </div>
   );
 };

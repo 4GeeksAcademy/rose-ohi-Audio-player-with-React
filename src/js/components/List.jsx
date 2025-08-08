@@ -1,6 +1,6 @@
 import React from 'react';
 
-const TrackList = ({ tracks, currentTrackId, onTrackSelect }) => {
+const List = ({ tracks, currentTrackId, onTrackSelect }) => {
   return (
     <div style={{ 
       backgroundColor: '#374151', 
@@ -55,4 +55,4 @@ const TrackList = ({ tracks, currentTrackId, onTrackSelect }) => {
   );
 };
 
-export default TrackList;
+export default List;

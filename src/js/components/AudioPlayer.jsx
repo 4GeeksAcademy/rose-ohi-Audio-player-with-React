@@ -1,8 +1,7 @@
-// src/js/component/AudioPlayer.js
 import React, { useState, useRef, useEffect } from 'react';
 import TrackInfo from './TrackInfo.jsx';
-import PlayerControls from './PlayerControls.jsx';
-import TrackList from './TrackList.jsx';
+import Controls from './Controls.jsx';
+import List from './List.jsx';
 
 const AudioPlayer = ({ tracks }) => {
   const [currentTrackIndex, setCurrentTrackIndex] = useState(0);
@@ -78,10 +77,10 @@ const AudioPlayer = ({ tracks }) => {
           gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', 
           gap: '1.5rem' 
         }}>
-          {/* Left Column - Player Controls */}
+       
           <div>
             <TrackInfo currentTrack={currentTrack} />
-            <PlayerControls
+            <Controls
               isPlaying={isPlaying}
               onPlayPause={handlePlayPause}
               onNext={handleNext}
@@ -91,9 +90,9 @@ const AudioPlayer = ({ tracks }) => {
             />
           </div>
 
-          {/* Right Column - Track List */}
+     
           <div>
-            <TrackList
+            <List
               tracks={tracks}
               currentTrackId={currentTrack?.id}
               onTrackSelect={handleTrackSelect}
