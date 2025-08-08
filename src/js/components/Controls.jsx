@@ -1,4 +1,3 @@
-
 import React from 'react';
 
 const Controls = ({ 
@@ -24,22 +23,23 @@ const Controls = ({
           onClick={onPrevious}
           style={{
             padding: '0.75rem',
-            backgroundColor: '#2563EB',
-            // border: 'none',
+            backgroundColor: '#ca25ebff',
+            border: 'none',
             borderRadius: '50%',
-            color: 'black',
-            // cursor: 'pointer',
+            color: 'white',
             fontSize: '1rem'
           }}
         >
-          ⏮
+
+          {/* back button */}
+         <i class="fa-solid fa-backward-step"></i>
         </button>
         
         <button
           onClick={onPlayPause}
           style={{
-            padding: '1rem',
-            backgroundColor: '#2563EB',
+            padding: '2rem',
+            backgroundColor: '#ca25ebff',
             border: 'none', 
             borderRadius: '50%',
             color: 'white',
@@ -47,14 +47,15 @@ const Controls = ({
             fontSize: '1.5rem'
           }}
         >
-          {isPlaying ? '⏸' : '▶'}
+          {/* Pause & Play toggle button */}
+          {isPlaying ? <i class="fa-solid fa-pause"></i> : <i class="fa-solid fa-play"></i>}
         </button>
         
         <button
           onClick={onNext}
           style={{
             padding: '0.75rem',
-            backgroundColor: '#2563EB',
+            backgroundColor: '#ca25ebff',
             border: 'none',
             borderRadius: '50%',
             color: 'white', 
@@ -62,7 +63,7 @@ const Controls = ({
             fontSize: '1rem'
           }}
         >
-          ⏭
+         <i class="fa-solid fa-forward-step"></i>
         </button>
       </div>
       
@@ -73,7 +74,7 @@ const Controls = ({
         justifyContent: 'center', 
         gap: '0.5rem' 
       }}>
-        <span style={{ color: '#9CA3AF' }}>🔊</span>
+        <span style={{ color: '#9CA3AF' }}></span>
         <input
           type="range"
           min="0"

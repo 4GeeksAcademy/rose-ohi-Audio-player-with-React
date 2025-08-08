@@ -1,25 +1,25 @@
 import React, { useState, useRef, useEffect } from 'react';
-import TrackInfo from './TrackInfo.jsx';
+import SongInfo from './SongInfo.jsx';
 import Controls from './Controls.jsx';
 import List from './List.jsx';
 
-const AudioPlayer = ({ tracks }) => {
-  const [currentTrackIndex, setCurrentTrackIndex] = useState(0);
+const AudioPlayer = ({ songs }) => {
+  const [currentSongIndex, setCurrentSongIndex] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
   const [volume, setVolume] = useState(0.5);
   
   const audioRef = useRef(null);
-  const currentTrack = tracks[currentTrackIndex];
+  const currentSong = songs[currentSongIndex];
 
-  // Update audio src when track changes
+  // Updates audio src when song changes
   useEffect(() => {
-    if (audioRef.current && currentTrack) {
-      audioRef.current.src = currentTrack.url;
+    if (audioRef.current && currentSong) {
+      audioRef.current.src = currentSong.url;
       audioRef.current.load();
     }
-  }, [currentTrack]);
+  }, [currentSong]);
 
-  // Update volume
+  //  volume
   useEffect(() => {
     if (audioRef.current) {
       audioRef.current.volume = volume;
@@ -38,38 +38,40 @@ const AudioPlayer = ({ tracks }) => {
   };
 
   const handleNext = () => {
-    const nextIndex = (currentTrackIndex + 1) % tracks.length;
-    setCurrentTrackIndex(nextIndex);
+    const nextIndex = (currentSongIndex + 1) % songs.length;
+    setCurrentSongIndex(nextIndex);
     setIsPlaying(false);
   };
 
   const handlePrevious = () => {
-    const prevIndex = currentTrackIndex === 0 ? tracks.length - 1 : currentTrackIndex - 1;
-    setCurrentTrackIndex(prevIndex);
+    const prevIndex = currentSongIndex === 0 ? songs.length - 1 : currentSongIndex - 1;
+    setCurrentSongIndex(prevIndex);
     setIsPlaying(false);
   };
 
-  const handleTrackSelect = (track) => {
-    const index = tracks.findIndex(t => t.id === track.id);
-    setCurrentTrackIndex(index);
+  const handleSongSelect = (song) => {
+    const index = songs.findIndex(t => t.id === song.id);
+    setCurrentSongIndex(index);
     setIsPlaying(false);
   };
 
   return (
     <div style={{ 
       minHeight: '100vh', 
-      background: 'linear-gradient(135deg, #111827 0%, #1E3A8A 100%)',
+      background: 'turquoise',
       padding: '2rem' 
     }}>
       <div style={{ maxWidth: '64rem', margin: '0 auto' }}>
         <h1 style={{ 
-          fontSize: '2.5rem', 
+          fontSize: '50px', 
           fontWeight: 'bold', 
+          marginBottom: '200px',
           color: 'white', 
           textAlign: 'center', 
-          marginBottom: '2rem' 
+          marginTop: '20px'
+          
         }}>
-          🎵 Music Player
+          🎵 AudioPlayer
         </h1>
         
         <div style={{ 
@@ -79,7 +81,7 @@ const AudioPlayer = ({ tracks }) => {
         }}>
        
           <div>
-            <TrackInfo currentTrack={currentTrack} />
+            <SongInfo currentSong={currentSong} />
             <Controls
               isPlaying={isPlaying}
               onPlayPause={handlePlayPause}
@@ -93,14 +95,13 @@ const AudioPlayer = ({ tracks }) => {
      
           <div>
             <List
-              tracks={tracks}
-              currentTrackId={currentTrack?.id}
-              onTrackSelect={handleTrackSelect}
+              songs={songs}
+              currentSongId={currentSong?.id}
+              onSongSelect={handleSongSelect}
             />
           </div>
         </div>
 
-        {/* Hidden Audio Element */}
         <audio ref={audioRef} preload="metadata" />
       </div>
     </div>

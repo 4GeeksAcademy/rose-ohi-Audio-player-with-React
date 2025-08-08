@@ -1,15 +1,15 @@
 import React from 'react';
 
-const List = ({ tracks, currentTrackId, onTrackSelect }) => {
+const List = ({ songs, currentSongId, onSongSelect }) => {
   return (
     <div style={{ 
-      backgroundColor: '#374151', 
+      backgroundColor: '#513749ff', 
       borderRadius: '0.5rem', 
       overflow: 'hidden' 
     }}>
       <div style={{ 
         padding: '1rem', 
-        backgroundColor: '#4B5563' 
+        backgroundColor: '#5b4b63ff' 
       }}>
         <h2 style={{ 
           color: 'white', 
@@ -24,30 +24,29 @@ const List = ({ tracks, currentTrackId, onTrackSelect }) => {
         maxHeight: '16rem', 
         overflowY: 'auto' 
       }}>
-        {tracks.map((track) => (
+        {songs.map((song) => (
           <div
-            key={track.id}
-            onClick={() => onTrackSelect(track)}
+            key={song.id}
+            onClick={() => onSongSelect(song)}
             style={{
               padding: '1rem',
               cursor: 'pointer',
-              backgroundColor: currentTrackId === track.id ? '#2563EB' : 'transparent',
-              color: currentTrackId === track.id ? 'white' : '#D1D5DB',
+              backgroundColor: currentSongId === song.id ? '#2563EB' : 'transparent',
               borderBottom: '1px solid #4B5563'
             }}
             onMouseOver={(e) => {
-              if (currentTrackId !== track.id) {
+              if (currentSongId !== song.id) {
                 e.target.style.backgroundColor = '#4B5563';
               }
             }}
             onMouseOut={(e) => {
-              if (currentTrackId !== track.id) {
+              if (currentSongId !== song.id) {
                 e.target.style.backgroundColor = 'transparent';
               }
             }}
           >
-            <div style={{ fontWeight: '500' }}>{track.name}</div>
-            <div style={{ fontSize: '0.875rem', opacity: '0.75' }}>{track.artist}</div>
+            <div style={{ fontWeight: '500' }}>{song.name}</div>
+            <div style={{ fontSize: '0.875rem', opacity: '0.75' }}>{song.artist}</div>
           </div>
         ))}
       </div>

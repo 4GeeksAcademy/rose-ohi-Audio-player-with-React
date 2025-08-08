@@ -1,7 +1,7 @@
 import React from 'react';
 
-const TrackInfo = ({ currentTrack }) => {
-  if (!currentTrack) return null;
+const SongInfo = ({ currentSong }) => {
+  if (!currentSong) return null;
   
   return (
     <div style={{ 
@@ -16,16 +16,16 @@ const TrackInfo = ({ currentTrack }) => {
         fontWeight: '600', 
         margin: 0 
       }}>
-        {currentTrack.name}
+        {currentSong.name}
       </h3>
       <p style={{ 
         color: '#9CA3AF', 
         margin: 0 
       }}>
-        {currentTrack.artist}
+        {currentSong.artist}
       </p>
     </div>
   );
 };
 
-export default TrackInfo;
+export default SongInfo;
